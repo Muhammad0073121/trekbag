@@ -1,14 +1,20 @@
 import React from "react";
 import Button from "./Button";
-import { useItemContext } from "../lib/hooks";
+import { useItemStore } from "../stores/itemStore";
 
 export default function ButtonGroup() {
-  const {
-    handleAllItemsAsComplete,
-    handleAllItemsAsIncomplete,
-    handleItemsToInitial,
-    handleRemoveAllItems,
-  } = useItemContext();
+  const handleAllItemsAsComplete = useItemStore(
+    (state) => state.handleAllItemsAsComplete
+  );
+  const handleAllItemsAsIncomplete = useItemStore(
+    (state) => state.handleAllItemsAsIncomplete
+  );
+  const handleItemsToInitial = useItemStore(
+    (state) => state.handleItemsToInitial
+  );
+  const handleRemoveAllItems = useItemStore(
+    (state) => state.handleRemoveAllItems
+  );
   const secondaryButtons = [
     { title: "Mark all as complete", onClick: handleAllItemsAsComplete },
     { title: "Mark all as incomplete", onClick: handleAllItemsAsIncomplete },
