@@ -1,12 +1,15 @@
 import React from "react";
+import EmptyView from "./EmptyView";
 
 export default function ItemList({
   items,
   handleDeleteItem,
   handleToggleItem,
 }) {
-  return (
-    <ul>
+  return items.length === 0 ? (
+    <EmptyView />
+  ) : (
+    <ul className="item-list">
       {items.map((item) => (
         <Item
           key={item.id}
