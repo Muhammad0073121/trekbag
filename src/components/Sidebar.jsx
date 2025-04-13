@@ -1,23 +1,14 @@
 import React from "react";
 import AddItemForm from "./AddItemForm";
 import ButtonGroup from "./ButtonGroup";
+import { useItemContext } from "../lib/hooks";
 
-export default function Sidebar({
-  handleAddItems,
-  handleItemsToInitial,
-  handleRemoveAllItems,
-  handleAllItemsAsIncomplete,
-  handleAllItemsAsComplete,
-}) {
+export default function Sidebar() {
+  const { handleAddItems } = useItemContext();
   return (
     <div className="sidebar">
       <AddItemForm onAddItems={handleAddItems} />
-      <ButtonGroup
-        handleRemoveAllItems={handleRemoveAllItems}
-        handleItemsToInitial={handleItemsToInitial}
-        handleAllItemsAsIncomplete={handleAllItemsAsIncomplete}
-        handleAllItemsAsComplete={handleAllItemsAsComplete}
-      />
+      <ButtonGroup />
     </div>
   );
 }
